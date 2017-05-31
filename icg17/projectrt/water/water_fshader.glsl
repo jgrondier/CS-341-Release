@@ -60,7 +60,7 @@ void main() {
     }
 
 
-    color = mix(color_tot, color_tot1, 0.2) / samples_float;
+    color = mix(color_tot, color_tot1, 0.3) / samples_float;
 
     color.w = 0.8;
 
