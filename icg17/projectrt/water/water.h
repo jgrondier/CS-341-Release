@@ -33,7 +33,7 @@ struct Light_ {
 
 class Water: public Light_ {
 
-private:
+public:
     GLuint vertex_array_id_;                // vertex array object
     GLuint vertex_buffer_object_position_;  // memory buffer for positions
     GLuint vertex_buffer_object_index_;     // memory buffer for indices
@@ -187,10 +187,6 @@ public:
         glDeleteTextures(1, &texture_id_);
         glDeleteTextures(1,&refraction_texture_id_);
         glDeleteTextures(1,&h_texture_id_);
-    }
-    void UpdateSize(int screenquad_width, int screenquad_height) {
-        this->water_width_ = screenquad_width;
-        this->water_height_ = screenquad_height;
     }
 
     void Draw(float time,

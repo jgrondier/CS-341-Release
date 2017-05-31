@@ -20,8 +20,8 @@ Grid grid;
 Water water;
 Cube cube;
 
-int window_width = 1280;
-int window_height = 720;
+int window_width = 1600;
+int window_height = 900;
 
 FrameBuffer framebuffer; // here we will generate the heightmap
 
@@ -59,7 +59,7 @@ bool keys[1024];
 int acc[3] = {0,0,0};
 float heights[5] = {0,0,0,0,0};
 
-GLuint framebuffer_texture_id;
+GLuint framebuffer_texture_id, water_framebuffer_id, ref_fb_id;
 
 void Init(GLFWwindow* window) {
 
@@ -97,9 +97,7 @@ void Init(GLFWwindow* window) {
     screenquad.Init();
     grid.Init(framebuffer_texture_id);
 
-    GLuint water_framebuffer_id;
     water_framebuffer_id = water_framebuffer.Init(window_width, window_height);
-    GLuint ref_fb_id;
     ref_fb_id = ref_fb.Init(window_width, window_height);
 
     water.Init(window_width, window_height, water_framebuffer_id, ref_fb_id, framebuffer_texture_id);
@@ -166,7 +164,10 @@ void ResizeCallback(GLFWwindow* window, int width, int height) {
 
     glViewport(0, 0, window_width, window_height);
 
-    water.UpdateSize(window_width, window_height);
+
+    water_framebuffer_id = water_framebuffer.Init(window_width, window_height);
+    water.Init(window_width, window_height, water_framebuffer_id, ref_fb_id, framebuffer_texture_id);
+
 
 }
 
