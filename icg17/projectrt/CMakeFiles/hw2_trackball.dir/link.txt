@@ -1,0 +1,1 @@
+/usr/bin/c++    -std=c++11   CMakeFiles/hw2_trackball.dir/main.cpp.o  -o hw2_trackball -rdynamic -lGLU -lGL -lglfw -lGLEW 
